@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>placo_vendor</name>
+  <version>0.1.0</version>
+  <description>ROS 2 vendor package for the PlaCo C++ inverse kinematics and dynamics library.</description>
+  <maintainer email="55273583+Hyh2001@users.noreply.github.com">Yuhao Huang</maintainer>
+  <license>MIT</license>
+  <url type="website">https://placo.readthedocs.io/en/latest/</url>
+  <url type="repository">https://github.com/Rhoban/placo</url>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_vendor_package</buildtool_depend>
+  <buildtool_depend>git</buildtool_depend>
+  <buildtool_depend>python3-vcstool</buildtool_depend>
+  <depend>eigen</depend>
+  <depend>pinocchio</depend>
+  <depend>jsoncpp</depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

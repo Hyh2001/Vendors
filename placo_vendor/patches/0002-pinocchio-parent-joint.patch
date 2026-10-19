@@ -1,0 +1,13 @@
+diff --git a/src/placo/model/robot_wrapper.cpp b/src/placo/model/robot_wrapper.cpp
+index 151d6f8..48c6bb9 100644
+--- a/src/placo/model/robot_wrapper.cpp
++++ b/src/placo/model/robot_wrapper.cpp
+@@ -335,7 +335,7 @@ void RobotWrapper::compute_hessians()
+ Eigen::MatrixXd RobotWrapper::get_frame_hessian(FrameIndex frame, int joint_v_index)
+ {
+   // Frame parent joint index
+-  pinocchio::JointIndex joint_id = model.frames[frame].parent;
++  pinocchio::JointIndex joint_id = model.frames[frame].parentJoint;
+   pinocchio::SE3 T = model.frames[frame].placement;
+ 
+   pinocchio::Tensor<double, 3, 0> H = pinocchio::getJointKinematicHessian(model, *data, joint_id, pinocchio::LOCAL);

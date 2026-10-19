@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9cb4299..b46c449 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,6 +52,7 @@ add_library(unitree_sdk2 STATIC IMPORTED GLOBAL)
+ set_target_properties(unitree_sdk2 PROPERTIES
+         IMPORTED_LOCATION ${UNITREE_SDK_LIB})
+ target_link_libraries(unitree_sdk2 INTERFACE ddsc ddscxx Threads::Threads)
++target_compile_features(unitree_sdk2 INTERFACE cxx_std_17)
+ target_include_directories(unitree_sdk2 INTERFACE
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+         $<INSTALL_INTERFACE:include>)
+@@ -80,3 +81,7 @@ configure_file(cmake/unitree_sdk2Config.cmake.in unitree_sdk2Config.cmake @ONLY)
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/unitree_sdk2Config.cmake"
+     "${CMAKE_CURRENT_BINARY_DIR}/unitree_sdk2ConfigVersion.cmake"
+     DESTINATION lib/cmake/unitree_sdk2)
++
++# Preserve SDK and bundled third-party redistribution notices.
++install(FILES LICENSE DESTINATION share/unitree_sdk2)
++install(DIRECTORY licenses/ DESTINATION share/unitree_sdk2/licenses)
+diff --git a/cmake/unitree_sdk2Targets.cmake b/cmake/unitree_sdk2Targets.cmake
+index 5f401ae..cae248b 100644
+--- a/cmake/unitree_sdk2Targets.cmake
++++ b/cmake/unitree_sdk2Targets.cmake
+@@ -66,6 +66,7 @@ set_target_properties(unitree_sdk2 PROPERTIES
+     IMPORTED_LOCATION ${_IMPORT_PREFIX}/lib/libunitree_sdk2.a
+     INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;${_IMPORT_PREFIX}/include"
+     INTERFACE_LINK_LIBRARIES "ddsc;ddscxx;Threads::Threads"
++    INTERFACE_COMPILE_FEATURES cxx_std_17
+     LINKER_LANGUAGE CXX
+ )
+ 
