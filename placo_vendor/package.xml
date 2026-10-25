@@ -13,7 +13,7 @@
   <buildtool_depend>python3-vcstool</buildtool_depend>
   <depend>eigen</depend>
   <depend>pinocchio</depend>
-  <depend>jsoncpp</depend>
+  <depend>libjsoncpp-dev</depend>
   <export>
     <build_type>ament_cmake</build_type>
   </export>
